@@ -1,6 +1,6 @@
 .dsmeta-red-btn-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .dsmeta-red-btn {
@@ -16,5 +16,5 @@
 }
 
 .dsmeta-red-btn img {
-    width: 19px;
+  width: 19px;
 }
