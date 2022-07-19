@@ -18,11 +18,21 @@ export function SalesCard() {
 
   const [sales, setSales] = useState<Sale[]>([]);
 
+  function addZero(num: number){
+    if (num <= 9) 
+        return "0" + num;
+    else
+        return num; 
+  }
+
   useEffect(() => {
-    axios.get(`${BASE_URL}/sales`).then((res) => {
+    let minDateFormatted = addZero(minDate.getFullYear()) + '-' + addZero((minDate.getMonth() + 1)) + '-' + addZero((minDate.getDate() )); 
+    let maxDateFormatted = addZero(maxDate.getFullYear()) + '-' + addZero((maxDate.getMonth() + 1)) + '-' + addZero((maxDate.getDate() ));
+    
+    axios.get(`${BASE_URL}/sales?minDate=${minDateFormatted}&maxDate=${maxDateFormatted}`).then((res) => {
       setSales(res.data.content);
     });
-  }, []);
+  }, [minDate, maxDate]);
 
   return (
     <div className="dsmeta-card">
